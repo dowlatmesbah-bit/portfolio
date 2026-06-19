@@ -1,171 +1,248 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>DOWLATMESBAH</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
+:root{
+--brand:#053827;
+--brand2:#0b5c43;
+--bg:#050505;
+--text:#ffffff;
+--muted:#aaaaaa;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
 body{
 margin:0;
-font-family:Tahoma, sans-serif;
-background:#0f0f0f;
-color:white;
-text-align:center;
+font-family:Tahoma,sans-serif;
+color:var(--text);
+background:var(--bg);
 overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* cinematic background */
+
+body::before{
+content:"";
+position:fixed;
+width:900px;
+height:900px;
+background:radial-gradient(circle,var(--brand),transparent 60%);
+top:-200px;
+right:-200px;
+opacity:.25;
+filter:blur(120px);
+animation:glowMove 12s infinite alternate;
+z-index:-1;
+}
+
+@keyframes glowMove{
+from{transform:translate(0,0)}
+to{transform:translate(-150px,120px)}
+}
+
+/* nav */
 
 nav{
-background:#000;
-padding:20px;
 position:fixed;
-width:100%;
 top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 30px;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(10px);
 z-index:1000;
+}
+
+.nav-logo{
+height:36px;
+opacity:0;
+animation:logoNav 1s forwards;
+animation-delay:3s;
+}
+
+@keyframes logoNav{
+to{opacity:1}
 }
 
 nav a{
 color:white;
-margin:0 15px;
 text-decoration:none;
 font-size:14px;
-opacity:0.8;
+opacity:.8;
 }
 
-/* HERO */
+/* hero */
 
 .hero{
-padding-top:170px;
-padding-bottom:120px;
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
 }
 
-/* LOGO ANIMATION */
+/* center logo animation */
 
-.logo{
-width:200px;
+.center-logo{
+width:260px;
 opacity:0;
-animation:logoFade 2s ease forwards;
+animation:centerAnim 3.2s forwards;
 }
 
-@keyframes logoFade{
+@keyframes centerAnim{
+
 0%{
 opacity:0;
-transform:translateY(30px);
+transform:scale(.9) translateY(40px);
 }
-100%{
+
+30%{
 opacity:1;
-transform:translateY(0);
-}
+transform:scale(1);
 }
 
-/* NAME */
+70%{
+opacity:1;
+transform:scale(.6) translateY(-120px);
+}
 
-.hero h1{
-font-size:42px;
+100%{
+opacity:0;
+transform:scale(.4) translateY(-200px);
+}
+
+}
+
+/* text */
+
+h1{
+font-size:46px;
 letter-spacing:4px;
-margin-top:30px;
+margin:10px 0;
 opacity:0;
-animation:textFade 2s ease forwards;
-animation-delay:1.5s;
+animation:fadeUp 1.5s forwards;
+animation-delay:3s;
 }
 
-/* SUBTITLE */
-
-.hero p{
+.subtitle{
+color:var(--muted);
 opacity:0;
-animation:textFade 2s ease forwards;
-animation-delay:2.5s;
+animation:fadeUp 1.5s forwards;
+animation-delay:3.8s;
 }
-
-/* BUTTON */
 
 .btn{
 display:inline-block;
-margin-top:30px;
-padding:14px 35px;
-background:#053827;
+margin-top:28px;
+padding:14px 36px;
+background:var(--brand);
 color:white;
 text-decoration:none;
-border-radius:5px;
+border-radius:8px;
 opacity:0;
-animation:textFade 2s ease forwards;
-animation-delay:3.5s;
+animation:fadeUp 1.5s forwards;
+animation-delay:4.5s;
+transition:.3s;
 }
 
-@keyframes textFade{
-0%{
+.btn:hover{
+background:var(--brand2);
+}
+
+@keyframes fadeUp{
+from{
 opacity:0;
 transform:translateY(20px);
 }
-100%{
+to{
 opacity:1;
 transform:translateY(0);
 }
 }
 
-/* SECTIONS */
+/* gallery */
 
-.section{
-padding:90px 20px;
+.gallery{
+padding:100px 20px;
+max-width:1200px;
+margin:auto;
 }
 
-.section-title{
-font-size:28px;
+.gallery h2{
+text-align:center;
 margin-bottom:50px;
 letter-spacing:2px;
 }
 
-/* CARD */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
 
 .card{
-display:inline-block;
-padding:30px 60px;
-background:#1a1a1a;
-border-radius:8px;
-text-decoration:none;
-color:white;
-transition:0.3s;
+position:relative;
+overflow:hidden;
+border-radius:12px;
 }
 
-.card:hover{
-background:#053827;
+.card img, .card video{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:transform .4s;
 }
 
-/* CONTACT */
+.card:hover img{
+transform:scale(1.05);
+}
 
-.contact i{
+/* contact */
+
+.contact{
+text-align:center;
+padding:90px 20px;
+}
+
+.icons i{
 font-size:22px;
-margin:15px;
+margin:12px;
 color:white;
 }
 
-/* FOOTER */
+/* footer */
 
 footer{
-margin-top:80px;
+text-align:center;
 padding:40px;
-opacity:0.6;
 font-size:13px;
+opacity:.6;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <nav>
 
-<a href="#">Home</a>
-<a href="#portfolio">Portfolio</a>
+<img src="white2 copy.png" class="nav-logo">
+
 <a href="#contact">Contact</a>
 
 </nav>
@@ -173,11 +250,11 @@ font-size:13px;
 
 <section class="hero">
 
-<img src="white2%20copy.png" class="logo">
+<img src="white2 copy.png" class="center-logo">
 
 <h1>DOWLATMESBAH</h1>
 
-<p>Advertising & Visual Production</p>
+<p class="subtitle">Advertising & Visual Production</p>
 
 <a class="btn" href="https://drive.google.com/drive/folders/1mMTPo1P_4UITRHBs0IyCcX6-tQ8oXiMh" target="_blank">
 مشاهده پورتفولیو
@@ -186,20 +263,32 @@ font-size:13px;
 </section>
 
 
-<section id="portfolio" class="section">
+<section class="gallery">
 
-<div class="section-title">PORTFOLIO</div>
+<h2>SELECTED WORK</h2>
 
-<a href="https://drive.google.com/drive/folders/1mMTPo1P_4UITRHBs0IyCcX6-tQ8oXiMh" target="_blank" class="card">
-مشاهده پورتفولیو
-</a>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba">
+</div>
+
+</div>
 
 </section>
 
 
-<section id="contact" class="section">
+<section id="contact" class="contact">
 
-<div class="section-title">CONTACT</div>
+<h2>CONTACT</h2>
 
 <p>
 <a href="mailto:dowlatmesbah@gmail.com" style="color:white;text-decoration:none;">
@@ -207,7 +296,7 @@ dowlatmesbah@gmail.com
 </a>
 </p>
 
-<div class="contact">
+<div class="icons">
 
 <a href="https://instagram.com/mesbah.visual" target="_blank">
 <i class="fab fa-instagram"></i>
@@ -225,6 +314,7 @@ dowlatmesbah@gmail.com
 
 </section>
 
+
 <footer>
 
 © 2026 DOWLATMESBAH
@@ -232,5 +322,4 @@ dowlatmesbah@gmail.com
 </footer>
 
 </body>
-
 </html>
