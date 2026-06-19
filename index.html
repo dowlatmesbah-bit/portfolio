@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>DOWLATMESBAH</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -11,10 +13,10 @@
 
 :root{
 --brand:#053827;
---brand2:#0b5c43;
+--brand2:#0a5a41;
 --bg:#050505;
 --text:#ffffff;
---muted:#aaaaaa;
+--muted:#a0a0a0;
 }
 
 *{box-sizing:border-box}
@@ -24,33 +26,43 @@ html{scroll-behavior:smooth}
 body{
 margin:0;
 font-family:Tahoma,sans-serif;
-color:var(--text);
 background:var(--bg);
+color:var(--text);
 overflow-x:hidden;
 }
 
-/* cinematic background */
+/* LOADER */
 
-body::before{
-content:"";
+.loader{
 position:fixed;
-width:900px;
-height:900px;
-background:radial-gradient(circle,var(--brand),transparent 60%);
-top:-200px;
-right:-200px;
-opacity:.25;
-filter:blur(120px);
-animation:glowMove 12s infinite alternate;
-z-index:-1;
+inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+animation:loaderFade 1s ease 2.2s forwards;
 }
 
-@keyframes glowMove{
-from{transform:translate(0,0)}
-to{transform:translate(-150px,120px)}
+.loader img{
+width:170px;
+opacity:0;
+animation:logoIn 1.5s forwards;
 }
 
-/* nav */
+@keyframes logoIn{
+from{opacity:0; transform:scale(.9)}
+to{opacity:1; transform:scale(1)}
+}
+
+@keyframes loaderFade{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+/* NAV */
 
 nav{
 position:fixed;
@@ -66,14 +78,7 @@ z-index:1000;
 }
 
 .nav-logo{
-height:36px;
-opacity:0;
-animation:logoNav 1s forwards;
-animation-delay:3s;
-}
-
-@keyframes logoNav{
-to{opacity:1}
+height:34px;
 }
 
 nav a{
@@ -83,79 +88,38 @@ font-size:14px;
 opacity:.8;
 }
 
-/* hero */
+/* HERO */
 
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:20px;
+padding:120px 20px 80px;
+background:
+radial-gradient(circle at top, rgba(5,56,39,.4), transparent 60%);
 }
 
-/* center logo animation */
-
-.center-logo{
-width:260px;
-opacity:0;
-animation:centerAnim 3.2s forwards;
-}
-
-@keyframes centerAnim{
-
-0%{
-opacity:0;
-transform:scale(.9) translateY(40px);
-}
-
-30%{
-opacity:1;
-transform:scale(1);
-}
-
-70%{
-opacity:1;
-transform:scale(.6) translateY(-120px);
-}
-
-100%{
-opacity:0;
-transform:scale(.4) translateY(-200px);
-}
-
-}
-
-/* text */
-
-h1{
+.hero h1{
 font-size:46px;
 letter-spacing:4px;
 margin:10px 0;
-opacity:0;
-animation:fadeUp 1.5s forwards;
-animation-delay:3s;
 }
 
 .subtitle{
 color:var(--muted);
-opacity:0;
-animation:fadeUp 1.5s forwards;
-animation-delay:3.8s;
+margin-bottom:25px;
 }
 
 .btn{
 display:inline-block;
-margin-top:28px;
 padding:14px 36px;
 background:var(--brand);
 color:white;
 text-decoration:none;
 border-radius:8px;
-opacity:0;
-animation:fadeUp 1.5s forwards;
-animation-delay:4.5s;
 transition:.3s;
 }
 
@@ -163,60 +127,31 @@ transition:.3s;
 background:var(--brand2);
 }
 
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
+/* ABOUT */
 
-/* gallery */
-
-.gallery{
+.about{
 padding:100px 20px;
-max-width:1200px;
+max-width:900px;
 margin:auto;
-}
-
-.gallery h2{
 text-align:center;
-margin-bottom:50px;
+}
+
+.about h2{
 letter-spacing:2px;
+margin-bottom:30px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+.about p{
+line-height:1.9;
+color:#d0d0d0;
+font-size:15px;
 }
 
-.card{
-position:relative;
-overflow:hidden;
-border-radius:12px;
-}
-
-.card img, .card video{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-transition:transform .4s;
-}
-
-.card:hover img{
-transform:scale(1.05);
-}
-
-/* contact */
+/* CONTACT */
 
 .contact{
+padding:80px 20px;
 text-align:center;
-padding:90px 20px;
 }
 
 .icons i{
@@ -225,7 +160,7 @@ margin:12px;
 color:white;
 }
 
-/* footer */
+/* FOOTER */
 
 footer{
 text-align:center;
@@ -234,10 +169,47 @@ font-size:13px;
 opacity:.6;
 }
 
+/* MOBILE */
+
+@media (max-width:768px){
+
+.hero h1{
+font-size:32px;
+letter-spacing:2px;
+}
+
+.subtitle{
+font-size:14px;
+}
+
+.btn{
+padding:12px 28px;
+font-size:14px;
+}
+
+nav{
+padding:14px 18px;
+}
+
+.about{
+padding:70px 25px;
+}
+
+.about p{
+font-size:14px;
+line-height:1.8;
+}
+
+}
+
 </style>
 </head>
 
 <body>
+
+<div class="loader">
+<img src="white2 copy.png">
+</div>
 
 <nav>
 
@@ -250,8 +222,6 @@ opacity:.6;
 
 <section class="hero">
 
-<img src="white2 copy.png" class="center-logo">
-
 <h1>DOWLATMESBAH</h1>
 
 <p class="subtitle">Advertising & Visual Production</p>
@@ -263,25 +233,18 @@ opacity:.6;
 </section>
 
 
-<section class="gallery">
+<section class="about">
 
-<h2>SELECTED WORK</h2>
+<h2>ABOUT</h2>
 
-<div class="grid">
+<p>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
-</div>
+DOWLATMESBAH is focused on creating high‑quality visual content for brands and businesses.
+The goal is to deliver advertising images and videos that help products stand out and communicate clearly with customers.
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
-</div>
+Specializing in product photography, commercial visuals, and digital advertising content.
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba">
-</div>
-
-</div>
+</p>
 
 </section>
 
