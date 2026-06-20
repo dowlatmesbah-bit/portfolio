@@ -1,246 +1,241 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mesbah Dowlat | Visual Creator</title>
+
+<title>MESBAH DOWLAT</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
+:root{
+--brand:#053827;
+--brand2:#0a5a41;
+--bg:#050505;
+--text:#ffffff;
+--muted:#a0a0a0;
+}
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-    font-family: sans-serif;
-    background:#0b0f0d;
-    color:#fff;
-    overflow-x:hidden;
+margin:0;
+font-family:Tahoma,sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
 }
 
-/* =========================
-   CINEMATIC GREEN LIGHT
-========================= */
+/* LOADER */
 
-body::before{
-    content:"";
-    position:fixed;
-    top:-30%;
-    left:-30%;
-    width:160%;
-    height:160%;
-    background:radial-gradient(circle at center, rgba(5,56,39,0.25), transparent 60%);
-    animation:moveLight 12s infinite alternate ease-in-out;
-    z-index:-1;
+.loader{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+animation:loaderFade 1s ease 2.2s forwards;
 }
 
-@keyframes moveLight{
-    0%{ transform:translate(0,0) scale(1); }
-    50%{ transform:translate(10%,10%) scale(1.2); }
-    100%{ transform:translate(-10%,-10%) scale(1); }
+.loader img{
+width:170px;
+opacity:0;
+animation:logoIn 1.5s forwards;
 }
 
-/* =========================
-   INTRO LOGO ANIMATION
-========================= */
-
-.intro{
-    position:fixed;
-    width:100%;
-    height:100vh;
-    background:#0b0f0d;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:999;
-    animation:fadeOut 1s ease forwards 3s;
+@keyframes logoIn{
+from{opacity:0; transform:scale(.9)}
+to{opacity:1; transform:scale(1)}
 }
 
-.intro h1{
-    font-size:48px;
-    letter-spacing:4px;
-    opacity:0;
-    animation:fadeIn 1.5s ease forwards;
+@keyframes loaderFade{
+to{
+opacity:0;
+visibility:hidden;
+}
 }
 
-@keyframes fadeIn{
-    to{ opacity:1; }
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 30px;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(10px);
+z-index:1000;
 }
 
-@keyframes fadeOut{
-    to{
-        opacity:0;
-        visibility:hidden;
-    }
+.nav-logo{
+height:34px;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    flex-direction:column;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 20px 80px;
+background:
+radial-gradient(circle at top, rgba(5,56,39,.4), transparent 60%);
 }
 
 .hero h1{
-    font-size:52px;
-    letter-spacing:4px;
+font-size:46px;
+letter-spacing:4px;
+margin:10px 0;
 }
 
-.hero span{
-    margin-top:20px;
-    color:#053827;
-    letter-spacing:3px;
-    font-size:18px;
+.subtitle{
+color:var(--muted);
+margin-bottom:25px;
 }
 
-/* =========================
-   ABOUT
-========================= */
-
-section{
-    padding:120px 10%;
+.btn{
+display:inline-block;
+padding:14px 36px;
+background:var(--brand);
+color:white;
+text-decoration:none;
+border-radius:8px;
+transition:.3s;
 }
 
-.about{
-    max-width:1000px;
-    margin:auto;
+.btn:hover{
+background:var(--brand2);
 }
 
-.about h2{
-    text-align:center;
-    margin-bottom:60px;
-    color:#053827;
-    font-size:32px;
-    letter-spacing:2px;
+/* CONTACT */
+
+.contact{
+padding:80px 20px;
+text-align:center;
 }
 
-.about p{
-    line-height:2.3;
-    font-size:18px;
-    margin-bottom:30px;
-    color:#d6d6d6;
-    opacity:0;
-    transform:translateY(30px);
-    transition:all 1s ease;
+.contact h2{
+margin-bottom:20px;
 }
 
-.about p.show{
-    opacity:1;
-    transform:translateY(0);
+.icons i{
+font-size:22px;
+margin:12px;
+color:white;
 }
 
-/* =========================
-   PROJECT GRID
-========================= */
-
-.projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    margin-top:60px;
-}
-
-.project{
-    background:#111;
-    padding:40px;
-    border:1px solid #1a1a1a;
-    transition:all 0.4s ease;
-}
-
-.project:hover{
-    border-color:#053827;
-    transform:translateY(-8px);
-}
-
-.project h3{
-    margin-bottom:15px;
-    color:#053827;
-}
-
-/* ========================= */
+/* FOOTER */
 
 footer{
-    text-align:center;
-    padding:40px 0;
-    font-size:14px;
-    color:#777;
+text-align:center;
+padding:40px;
+font-size:13px;
+opacity:.6;
 }
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+.hero h1{
+font-size:32px;
+letter-spacing:2px;
+}
+
+.subtitle{
+font-size:14px;
+}
+
+.btn{
+padding:12px 28px;
+font-size:14px;
+}
+
+nav{
+padding:14px 18px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="intro">
-    <h1 dir="ltr">MESBAH DOWLAT</h1>
+<div class="loader">
+<img src="white2 copy.png">
 </div>
 
+<nav>
+
+<img src="white2 copy.png" class="nav-logo">
+
+</nav>
+
 <section class="hero">
-    <h1 dir="ltr">MESBAH DOWLAT</h1>
-    <span>VISUAL CREATOR</span>
+
+<h1 dir="ltr">MESBAH DOWLAT</h1>
+
+<p class="subtitle">
+تولید محتوای تبلیغاتی | عکاسی محصول | ویدیو تبلیغاتی
+</p>
+
+<a class="btn" href="https://dowlatmesbah-bit.github.io/portfolio/" target="_blank">
+مشاهده پورتفولیو
+</a>
+
 </section>
 
-<section class="about">
-    <h2>About</h2>
+<section class="contact">
 
-    <p class="reveal">
-    با تکیه بر تجربه در حوزه تولید محتوای بصری، عکاسی، فیلمبرداری و تبلیغات، هر پروژه را فراتر از یک اجرای صرف می‌بینم و برای آن راهکاری متناسب با هویت و اهداف هر برند طراحی می‌کنم.
-    </p>
+<h2>ارتباط</h2>
 
-    <p class="reveal">
-    تسلط بر نرم‌افزارهای تخصصی حوزه تصویر و تدوین در کنار بهره‌گیری از تجهیزات حرفه‌ای و کامل تصویربرداری، نورپردازی و تولید محتوا، این امکان را فراهم کرده است تا تمامی مراحل تولید، از ایده‌پردازی تا ارائه نهایی، با کیفیتی یکپارچه و استاندارد انجام شود.
-    </p>
+<p>
+<a href="mailto:dowlatmesbah@gmail.com" style="color:white;text-decoration:none;">
+dowlatmesbah@gmail.com
+</a>
+</p>
 
-    <p class="reveal">
-    علاوه بر تولید حرفه‌ای محتوا، با ارائه ایده‌های مارکتینگ و راهکارهای افزایش فروش آنلاین، کمک می‌کنم کسب‌وکارها نه‌تنها بهتر دیده شوند، بلکه بتوانند فروش مؤثرتری را تجربه کنند.
-    </p>
-</section>
+<div class="icons">
 
-<section class="about">
-    <h2>Projects</h2>
-    <div class="projects">
-        <div class="project">
-            <h3>Commercial Photography</h3>
-            <p>Creative product and brand photography.</p>
-        </div>
-        <div class="project">
-            <h3>Video Production</h3>
-            <p>Professional filming & cinematic editing.</p>
-        </div>
-        <div class="project">
-            <h3>Marketing Strategy</h3>
-            <p>Online growth & digital sales optimization.</p>
-        </div>
-    </div>
+<a href="https://instagram.com/mesbah.visual" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://wa.me/989131970943" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<a href="mailto:dowlatmesbah@gmail.com">
+<i class="fa fa-envelope"></i>
+</a>
+
+</div>
+
 </section>
 
 <footer>
-© 2026 Mesbah Dowlat
+
+© 2026 MESBAH DOWLAT
+
 </footer>
-
-<script>
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll(){
-    const trigger = window.innerHeight * 0.85;
-
-    reveals.forEach(el=>{
-        const top = el.getBoundingClientRect().top;
-        if(top < trigger){
-            el.classList.add("show");
-        }
-    });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-</script>
 
 </body>
 </html>
