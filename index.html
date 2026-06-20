@@ -1,286 +1,148 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MESBAH DOWLAT</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Mesbah Dowlat | Visual Creator</title>
 
 <style>
-
-:root{
---brand:#053827;
---brand2:#0a5a41;
---bg:#050505;
---text:#ffffff;
---muted:#a0a0a0;
-}
-
 *{
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-margin:0;
-font-family:Tahoma,sans-serif;
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
+    font-family: sans-serif;
+    background:#0e0e0e;
+    color:#ffffff;
+    overflow-x:hidden;
 }
 
-/* LOADER */
-
-.loader{
-position:fixed;
-inset:0;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
-animation:loaderFade 1s ease 2.2s forwards;
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
 }
 
-.loader img{
-width:170px;
-opacity:0;
-animation:logoIn 1.5s forwards;
+section{
+    padding:120px 0;
 }
 
-@keyframes logoIn{
-from{opacity:0; transform:scale(.9)}
-to{opacity:1; transform:scale(1)}
+h1,h2{
+    font-weight:300;
+    letter-spacing:2px;
 }
-
-@keyframes loaderFade{
-to{
-opacity:0;
-visibility:hidden;
-}
-}
-
-/* NAV */
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px 30px;
-background:rgba(0,0,0,.7);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-
-.nav-logo{
-height:34px;
-}
-
-/* HERO */
 
 .hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:120px 20px 80px;
-background:
-radial-gradient(circle at top, rgba(5,56,39,.4), transparent 60%);
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
 }
 
 .hero h1{
-font-size:46px;
-letter-spacing:4px;
-margin:10px 0;
+    font-size:48px;
+    color:#ffffff;
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 1.2s ease forwards 0.5s;
 }
 
-.subtitle{
-color:var(--muted);
-margin-bottom:25px;
+.hero span{
+    display:block;
+    font-size:18px;
+    margin-top:20px;
+    color:#053827;
+    letter-spacing:3px;
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 1.2s ease forwards 1s;
 }
-
-.btn{
-display:inline-block;
-padding:14px 36px;
-background:var(--brand);
-color:white;
-text-decoration:none;
-border-radius:8px;
-transition:.3s;
-}
-
-.btn:hover{
-background:var(--brand2);
-}
-
-/* ABOUT */
 
 .about{
-padding:100px 20px;
-max-width:900px;
-margin:auto;
-text-align:center;
+    background:#111;
 }
 
 .about h2{
-letter-spacing:2px;
-margin-bottom:30px;
+    font-size:32px;
+    margin-bottom:50px;
+    color:#053827;
+    text-align:center;
+    opacity:0;
+    transform:translateY(30px);
 }
 
 .about p{
-line-height:2;
-color:#d0d0d0;
-font-size:15px;
+    line-height:2.2;
+    margin-bottom:25px;
+    font-size:17px;
+    color:#dddddd;
+    opacity:0;
+    transform:translateY(30px);
 }
 
-/* CONTACT */
-
-.contact{
-padding:80px 20px;
-text-align:center;
+/* Scroll animation */
+.show{
+    animation:fadeUp 1.2s ease forwards;
 }
 
-.icons i{
-font-size:22px;
-margin:12px;
-color:white;
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
-
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:40px;
-font-size:13px;
-opacity:.6;
-}
-
-/* MOBILE */
-
-@media (max-width:768px){
-
-.hero h1{
-font-size:32px;
-letter-spacing:2px;
-}
-
-.subtitle{
-font-size:14px;
-}
-
-.btn{
-padding:12px 28px;
-font-size:14px;
-}
-
-nav{
-padding:14px 18px;
-}
-
-.about{
-padding:70px 25px;
-}
-
-.about p{
-font-size:14px;
-line-height:1.9;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="loader">
-<img src="white2 copy.png">
-</div>
-
-<nav>
-
-<img src="white2 copy.png" class="nav-logo">
-
-</nav>
-
-
 <section class="hero">
-
-<h1 dir="ltr">MESBAH DOWLAT</h1>
-
-<p class="subtitle">
-تولید محتوای تبلیغاتی | عکاسی محصول | ویدیو تبلیغاتی
-</p>
-
-<a class="btn" href="https://drive.google.com/drive/folders/1mMTPo1P_4UITRHBs0IyCcX6-tQ8oXiMh" target="_blank">
-مشاهده پورتفولیو
-</a>
-
+    <div>
+        <h1>MESBAH DOWLAT</h1>
+        <span>VISUAL CREATOR</span>
+    </div>
 </section>
-
 
 <section class="about">
+    <div class="container">
+        <h2 class="reveal">About</h2>
 
-<h2>درباره من</h2>
+        <p class="reveal">
+        با تکیه بر تجربه در حوزه تولید محتوای بصری، عکاسی، فیلمبرداری و تبلیغات، هر پروژه را فراتر از یک اجرای صرف می‌بینم و برای آن راهکاری متناسب با هویت و اهداف هر برند طراحی می‌کنم.
+        </p>
 
-<p>
+        <p class="reveal">
+        تسلط بر نرم‌افزارهای تخصصی حوزه تصویر و تدوین در کنار بهره‌گیری از تجهیزات حرفه‌ای و کامل تصویربرداری، نورپردازی و تولید محتوا، این امکان را فراهم کرده است تا تمامی مراحل تولید، از ایده‌پردازی تا ارائه نهایی، با کیفیتی یکپارچه و استاندارد انجام شود.
+        </p>
 
-مصباح دولت، فعال در حوزه تولید محتوای تبلیغاتی و عکاسی صنعتی با تمرکز بر خلق تصاویر و ویدیوهای حرفه‌ای برای برندها و کسب‌وکارها.
-
-هدف از هر پروژه تولید محتوایی است که علاوه بر زیبایی بصری، پیام برند را به‌درستی منتقل کند و باعث دیده شدن بهتر محصول یا خدمات شود.
-
-تمرکز اصلی بر عکاسی محصول، تولید محتوای تبلیغاتی، ساخت ویدیوهای برندینگ و تولید محتوای شبکه‌های اجتماعی است.
-
-</p>
-
+        <p class="reveal">
+        علاوه بر تولید حرفه‌ای محتوا، با ارائه ایده‌های مارکتینگ و راهکارهای افزایش فروش آنلاین، کمک می‌کنم کسب‌وکارها نه‌تنها بهتر دیده شوند، بلکه بتوانند فروش مؤثرتری را تجربه کنند.
+        </p>
+    </div>
 </section>
 
+<script>
+const reveals = document.querySelectorAll(".reveal");
 
-<section class="contact">
+function revealOnScroll(){
+    const triggerBottom = window.innerHeight * 0.85;
 
-<h2>ارتباط</h2>
+    reveals.forEach(el => {
+        const boxTop = el.getBoundingClientRect().top;
 
-<p>
-<a href="mailto:dowlatmesbah@gmail.com" style="color:white;text-decoration:none;">
-dowlatmesbah@gmail.com
-</a>
-</p>
+        if(boxTop < triggerBottom){
+            el.classList.add("show");
+        }
+    });
+}
 
-<div class="icons">
-
-<a href="https://instagram.com/mesbah.visual" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://wa.me/989131970943" target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<a href="mailto:dowlatmesbah@gmail.com">
-<i class="fa fa-envelope"></i>
-</a>
-
-</div>
-
-</section>
-
-
-<footer>
-
-© 2026 MESBAH DOWLAT
-
-</footer>
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+</script>
 
 </body>
 </html>
